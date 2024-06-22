@@ -1,4 +1,6 @@
 import { useState } from "react";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import Title from './assets/components/title.jsx'
 import Education from './assets/components/education.jsx'
 import Experience from './assets/components/experience.jsx'
@@ -10,6 +12,32 @@ import ExperienceInput from "./assets/components/experienceInput.jsx";
 import ProjectInput from "./assets/components/projectInput.jsx";
 import SkillInput from "./assets/components/skillsInput.jsx";
 export default function App(){
+  async function handleDownload() {
+      const input = document.querySelector('.resume');
+      const canvas = await html2canvas(input, {
+          scale: 2,
+          useCORS: true,
+          logging: true
+      });
+
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a4'
+      });
+
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgProps = pdf.getImageProperties(imgData);
+      const imgWidth = pdfWidth;
+      const imgHeight = (imgProps.height * pdfWidth ) / imgProps.width ;
+
+      const yPos = (pdfHeight - imgHeight) / 2;
+
+      pdf.addImage(imgData, 'PNG', 0, yPos, imgWidth, imgHeight);
+      pdf.save("CV.pdf");
+    }
     const [title, setTitle] = useState({
         name: "",
         email: "",
@@ -66,13 +94,14 @@ export default function App(){
     return (
         <div className="lg:flex">
         <div className="lg:mx-4 lg:my-10 md:mx-24 md:my-4 block">
+        <button onClick={handleDownload} className='my-4 bg-red-500 text-white rounded-lg py-2 px-4 hover:bg-red-900'>Download CV</button>
         <TitleInput setTitle={setTitle}></TitleInput>
         <EducationInput setEducation={setEducations} educationArray={educations}></EducationInput>
         <ExperienceInput setExperience={setExperiences} experienceArray={experiences}></ExperienceInput>
         <ProjectInput setProject={setProjects} projectArray={projects}></ProjectInput>
         <SkillInput setSkill={setSkills} skillArray={skills}></SkillInput>
       </div>
-      <div className="resume m-4">
+      <div className="resume m-4 px-4">
       <Title 
        name={title.name} 
        email={title.email} 
@@ -80,22 +109,22 @@ export default function App(){
        linkedin={title.linkedin} 
       />
       <div className="education">
-        <p className="font-bold text-xl">EDUCATION</p>
+        <p className="font-bold text-xl mb-2">EDUCATION</p>
         <hr className="h-0.5 bg-gray-800 mb-2" />
             {educationDisplay}
       </div>
       <div className="experience">
-        <p className="font-bold text-xl">EXPERIENCE</p>
+        <p className="font-bold text-xl mb-2">EXPERIENCE</p>
         <hr className="h-0.5 bg-gray-800 mb-2" />
             {experienceDisplay}
       </div>
       <div className="projects">
-        <p className="font-bold text-xl">PROJECTS</p>
+        <p className="font-bold text-xl mb-2">PROJECTS</p>
         <hr className="h-0.5 bg-gray-800 mb-2" />
             {projectDisplay}
       </div>
       <div className="skills">
-      <p className="font-bold text-xl">SKILLS</p>
+      <p className="font-bold text-xl mb-2">SKILLS</p>
       <hr className="h-0.5 bg-gray-800 mb-2" /> 
             {skillDisplay}
       </div>

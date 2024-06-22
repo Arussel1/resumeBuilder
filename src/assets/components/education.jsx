@@ -7,7 +7,7 @@ export default function Education({school, location, degree, course, start, end,
                 <p className=" mr-2 ml-auto italic">{start}-{end}</p>
             </div>
             <p className="italic">{location}</p>
-            <p>Revelant course: {course}</p>
+            <p className="text-wrap">Revelant course: {course}</p>
         </div>
     );
 }
