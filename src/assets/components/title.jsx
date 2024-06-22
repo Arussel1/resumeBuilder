@@ -21,10 +21,6 @@ export default function Title({ name, email, phone, linkedin, github }) {
                     <img src={linkedinIcon} alt="linkedin icon" className="w-4 h-4 mr-1" />
                     {linkedin}
                 </p>
-                <p className="mx-1 flex items-center">
-                    <img src={githubIcon} alt="github icon" className="w-4 h-4 mr-1" />
-                    {github}
-                </p>
             </div>
         </div>
     );

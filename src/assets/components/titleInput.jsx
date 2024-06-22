@@ -6,7 +6,6 @@ export default function TitleInput({ setTitle }){
         email: "",
         phone: "",
         linkedin: "",
-        github: "",
     });
     const [showForm, setshowForm] = useState(false);
 
@@ -54,14 +53,6 @@ export default function TitleInput({ setTitle }){
              value={localTitle.linkedin}
              onChange={changeTitle}
              placeholder='https://www.linkedin.com/in/....'
-            />
-            <label htmlFor="github">GitHub Profile:</label>
-            <input 
-             className='bg-gray-200 rounded-lg focus:bg-white h-8 pl-2'
-             name="github"
-             value={localTitle.github}
-             onChange={changeTitle}
-             placeholder='https://github.com/....'
             />
             <button type="submit" className='mt-4 bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-900'>Submit</button>
         </form>

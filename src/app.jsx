@@ -15,7 +15,6 @@ export default function App(){
         email: "",
         phone: "",
         linkedin: "",
-        github: "",
     });
 
     // Education input handling and display
@@ -79,7 +78,6 @@ export default function App(){
        email={title.email} 
        phone={title.phone} 
        linkedin={title.linkedin} 
-       github={title.github}  
       />
       <div className="education">
         <p className="font-bold text-xl">EDUCATION</p>
