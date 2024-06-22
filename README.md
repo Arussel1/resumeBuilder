@@ -1,1 +1,2 @@
 Resume generator web using React and Vite
+Live: https://vercel.com/new/arussel1s-projects/success?developer-id=&external-id=&redirect-url=&branch=main&deploymentUrl=resume-builder-pqfpltcwo-arussel1s-projects.vercel.app&projectName=resume-builder&s=https%3A%2F%2Fgithub.com%2FArussel1%2FresumeBuilder&gitOrgLimit=&hasTrialAvailable=1&totalProjects=1&slug=app-future&slug=en-US&slug=new&slug=arussel1s-projects&slug=success
