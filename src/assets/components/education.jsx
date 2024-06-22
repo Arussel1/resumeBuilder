@@ -1,6 +1,6 @@
-export default function Education({school, location, degree, course, start, end }){
+export default function Education({school, location, degree, course, start, end, id }){
     return (
-        <div className=" mb-4">
+        <div className=" mb-4" id={id}>
             <div className="flex">
                 <p className="font-bold mr-1">{school}</p>
                 <p className="italic">| {degree}</p>

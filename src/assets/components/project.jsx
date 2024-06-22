@@ -1,4 +1,4 @@
-export default function Project({  title, language, description, }) {
+export default function Project({  title, languages, description, }) {
     const descriptionItems = description.map((element, index) => (
         <li className="list-disc ml-4" key={index}>{element}</li>
     ));
@@ -7,7 +7,7 @@ export default function Project({  title, language, description, }) {
         <div className="mb-4">
             <div className="flex">
                 <p className="font-bold mr-1">{title.toUpperCase()}</p>
-                <p className="italic">| {language}</p>
+                <p className="italic">| {languages}</p>
             </div>
             <ul>
                 {descriptionItems}
